@@ -1,0 +1,135 @@
+<header class="navbar">
+  <div class="navbar__container">
+
+    <a
+      class="navbar__brand"
+      href="#home"
+      aria-label="صفحه اصلی"
+    >
+      <span class="navbar__brand-dot"></span>
+      <span>امیرحسین</span>
+    </a>
+
+    <nav class="navbar__desktop-menu" aria-label="منوی اصلی">
+      <a href="#home">خانه</a>
+      <a href="#projects">پروژه‌ها</a>
+      <a href="#skills">مهارت‌ها</a>
+      <a href="#about">درباره من</a>
+      <a href="#experience">تجربه‌ها</a>
+      <a href="#contact">تماس با من</a>
+    </nav>
+
+    <div class="navbar__actions">
+
+      <a
+        class="navbar__github"
+        href="https://github.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
+        GitHub
+      </a>
+
+      <button
+        class="navbar__hamburger"
+        type="button"
+        aria-label="باز کردن منو"
+        [attr.aria-expanded]="isMenuOpen"
+        (click)="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<div
+  class="navbar__overlay"
+  [class.navbar__overlay--active]="isMenuOpen"
+  (click)="closeMenu()"
+></div>
+
+<aside
+  class="navbar__sidebar"
+  [class.navbar__sidebar--open]="isMenuOpen"
+  aria-label="منوی موبایل"
+>
+  <div class="navbar__sidebar-header">
+
+    <span class="navbar__sidebar-title">
+      منو
+    </span>
+
+    <button
+      class="navbar__close"
+      type="button"
+      aria-label="بستن منو"
+      (click)="closeMenu()"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <nav class="navbar__mobile-menu">
+
+    <a
+      href="#home"
+      (click)="closeMenu()"
+    >
+      خانه
+    </a>
+
+    <a
+      href="#projects"
+      (click)="closeMenu()"
+    >
+      پروژه‌ها
+    </a>
+
+    <a
+      href="#skills"
+      (click)="closeMenu()"
+    >
+      مهارت‌ها
+    </a>
+
+    <a
+      href="#about"
+      (click)="closeMenu()"
+    >
+      درباره من
+    </a>
+
+    <a
+      href="#experience"
+      (click)="closeMenu()"
+    >
+      تجربه‌ها
+    </a>
+
+    <a
+      href="#contact"
+      (click)="closeMenu()"
+    >
+      تماس با من
+    </a>
+
+  </nav>
+
+  <div class="navbar__sidebar-footer">
+
+    <a
+      href="https://github.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      مشاهده GitHub
+    </a>
+
+  </div>
+</aside>

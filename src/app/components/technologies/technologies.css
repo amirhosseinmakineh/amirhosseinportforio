@@ -1,0 +1,329 @@
+:host {
+  display: block;
+}
+
+.skills {
+  position: relative;
+
+  padding: 120px 0;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(99, 102, 241, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 15% 80%,
+      rgba(37, 99, 235, 0.06),
+      transparent 30%
+    ),
+    #090b12;
+
+  direction: rtl;
+}
+
+.skills__container {
+  width: min(
+    1180px,
+    calc(100% - 32px)
+  );
+
+  margin: 0 auto;
+}
+
+/* Header */
+
+.skills__header {
+  max-width: 650px;
+
+  margin-bottom: 60px;
+}
+
+.skills__eyebrow {
+  display: inline-block;
+
+  color: #818cf8;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.skills__header h2 {
+  margin: 12px 0 14px;
+
+  color: #ffffff;
+
+  font-size: clamp(
+    32px,
+    5vw,
+    50px
+  );
+
+  font-weight: 900;
+}
+
+.skills__header p {
+  margin: 0;
+
+  color: #9097a7;
+
+  font-size: 15px;
+
+  line-height: 2;
+}
+
+/* Grid */
+
+.skills__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+/* Card */
+
+.skill-card {
+  position: relative;
+
+  padding: 28px;
+
+  overflow: hidden;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.015)
+    );
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.skill-card::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.12),
+      transparent 45%
+    );
+
+  transition: opacity 0.25s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(99, 102, 241, 0.25);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(99, 102, 241, 0.05),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  box-shadow:
+    0 20px 45px
+    rgba(0, 0, 0, 0.18);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+/* Card Header */
+
+.skill-card__header {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.skill-card__header h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.skill-card__header span {
+  display: inline-block;
+
+  margin-top: 6px;
+
+  color: #676f80;
+
+  font-size: 11px;
+
+  direction: ltr;
+}
+
+.skill-card__icon {
+  min-width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid
+    rgba(99, 102, 241, 0.14);
+
+  border-radius: 12px;
+
+  background:
+    rgba(99, 102, 241, 0.06);
+
+  color: #818cf8;
+
+  font-family:
+    'Courier New',
+    monospace;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Skill badges */
+
+.skill-card__items {
+  position: relative;
+
+  z-index: 1;
+
+  margin-top: 26px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 9px;
+}
+
+.skill-card__item {
+  padding: 8px 12px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.065);
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  color: #b7bdc9;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  direction: ltr;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.skill-card__item:hover {
+  color: #ffffff;
+
+  border-color:
+    rgba(99, 102, 241, 0.24);
+
+  background:
+    rgba(99, 102, 241, 0.07);
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .skills {
+    padding: 80px 0;
+  }
+
+  .skills__container {
+    width: min(
+      100% - 24px,
+      1180px
+    );
+  }
+
+  .skills__header {
+    margin-bottom: 40px;
+  }
+
+  .skills__header h2 {
+    font-size: 32px;
+  }
+
+  .skills__header p {
+    font-size: 14px;
+  }
+
+  .skill-card {
+    padding: 22px;
+  }
+
+  .skill-card__header h3 {
+    font-size: 17px;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width: 420px) {
+  .skill-card__items {
+    gap: 7px;
+  }
+
+  .skill-card__item {
+    padding: 7px 9px;
+
+    font-size: 11px;
+  }
+}

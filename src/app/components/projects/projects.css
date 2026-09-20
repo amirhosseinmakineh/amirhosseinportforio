@@ -1,0 +1,176 @@
+.projects {
+  padding: 120px 0;
+
+  background: #090b12;
+
+  direction: rtl;
+}
+
+.projects__container {
+  width: min(1180px, calc(100% - 32px));
+
+  margin: 0 auto;
+}
+
+.projects__header {
+  max-width: 650px;
+
+  margin-bottom: 70px;
+}
+
+.projects__eyebrow {
+  color: #818cf8;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.projects__header h2 {
+  margin: 12px 0;
+
+  color: #ffffff;
+
+  font-size: clamp(32px, 5vw, 50px);
+}
+
+.projects__header p {
+  margin: 0;
+
+  color: #8f96a6;
+
+  line-height: 2;
+}
+
+.projects__list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 90px;
+}
+
+.project {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: 60px;
+}
+
+.project--reverse .project__image {
+  order: 2;
+}
+
+.project__image {
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: #111520;
+}
+
+.project__image img {
+  width: 100%;
+
+  display: block;
+
+  aspect-ratio: 16 / 10;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+.project__image:hover img {
+  transform: scale(1.03);
+}
+
+.project__content {
+  max-width: 520px;
+}
+
+.project__number {
+  color: #6366f1;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.project__content h3 {
+  margin: 12px 0 16px;
+
+  color: #ffffff;
+
+  font-size: 30px;
+}
+
+.project__content p {
+  color: #9299a8;
+
+  line-height: 2;
+}
+
+.project__tags {
+  margin-top: 24px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.project__tags span {
+  padding: 7px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 8px;
+
+  color: #aab1bf;
+
+  font-size: 11px;
+}
+
+.project__link {
+  margin-top: 28px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  color: #818cf8;
+
+  text-decoration: none;
+
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 80px 0;
+  }
+
+  .projects__list {
+    gap: 70px;
+  }
+
+  .project {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .project--reverse .project__image {
+    order: 0;
+  }
+
+  .project__content h3 {
+    font-size: 24px;
+  }
+}

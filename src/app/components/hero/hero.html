@@ -1,0 +1,197 @@
+<section
+  id="home"
+  class="hero"
+>
+  <div class="hero__container">
+
+    <div class="hero__content">
+
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+
+        <span>
+          آماده همکاری روی پروژه‌های جدید
+        </span>
+      </div>
+
+      <p class="hero__intro">
+        سلام. من امیرحسین مکینه هستم با 3 سال سابقه کار در زمینه توسعه نرم افزار
+      </p>
+
+      <h1 class="hero__title">
+        برنامه‌نویس
+        <span>Backend</span>
+      </h1>
+
+      <div class="hero__actions">
+
+        <button
+          type="button"
+          class="hero__button hero__button--primary"
+          (click)="scrollToProjects()"
+        >
+          مشاهده پروژه‌ها
+
+          <span>
+            ←
+          </span>
+        </button>
+
+        <a
+          class="hero__button hero__button--secondary"
+          href="#contact"
+        >
+          تماس با من
+        </a>
+
+      </div>
+    </div>
+
+    <div class="hero__visual">
+
+      <div class="hero__glow hero__glow--one"></div>
+
+      <div class="hero__glow hero__glow--two"></div>
+
+      <div class="hero__code-card">
+
+        <div class="hero__code-header">
+
+          <div class="hero__code-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <span class="hero__code-file">
+            Program.cs
+          </span>
+
+        </div>
+
+        <div class="hero__code-body">
+
+          <div class="code-line">
+            <span class="code-keyword">
+              var
+            </span>
+
+            <span>
+              builder =
+            </span>
+
+            <span class="code-type">
+              WebApplication
+            </span>
+
+            <span>
+              .CreateBuilder(args);
+            </span>
+          </div>
+
+          <div class="code-line code-line--space">
+          </div>
+
+          <div class="code-line">
+            <span>
+              builder.Services.
+            </span>
+
+            <span class="code-method">
+              AddControllers
+            </span>
+
+            <span>
+              ();
+            </span>
+          </div>
+
+          <div class="code-line">
+
+            <span>
+              builder.Services.
+            </span>
+
+            <span class="code-method">
+              AddSignalR
+            </span>
+
+            <span>
+              ();
+            </span>
+
+          </div>
+
+          <div class="code-line code-line--space">
+          </div>
+
+          <div class="code-line">
+
+            <span class="code-keyword">
+              var
+            </span>
+
+            <span>
+              app = builder.
+            </span>
+
+            <span class="code-method">
+              Build
+            </span>
+
+            <span>
+              ();
+            </span>
+
+          </div>
+
+          <div class="code-line">
+
+            <span>
+              app.
+            </span>
+
+            <span class="code-method">
+              MapControllers
+            </span>
+
+            <span>
+              ();
+            </span>
+
+          </div>
+
+          <div class="code-line">
+
+            <span>
+              app.
+            </span>
+
+            <span class="code-method">
+              Run
+            </span>
+
+            <span>
+              ();
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="hero__status">
+
+          <span class="hero__status-dot"></span>
+
+          <span>
+            Backend is running
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

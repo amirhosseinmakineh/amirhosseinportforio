@@ -1,0 +1,430 @@
+:host {
+  display: block;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background: rgba(10, 12, 20, 0.85);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  direction: rtl;
+}
+
+.navbar__container {
+  width: min(1180px, calc(100% - 32px));
+
+  min-height: 72px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+.navbar__brand-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    #3b82f6,
+    #8b5cf6
+  );
+
+  box-shadow: 0 0 18px rgba(99, 102, 241, 0.8);
+}
+
+.navbar__desktop-menu {
+  display: flex;
+  align-items: center;
+
+  gap: 30px;
+}
+
+.navbar__desktop-menu a {
+  position: relative;
+
+  color: #a9afbd;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar__desktop-menu a:hover {
+  color: #ffffff;
+}
+
+.navbar__desktop-menu a::after {
+  content: '';
+
+  position: absolute;
+
+  right: 0;
+  bottom: -9px;
+
+  width: 0;
+  height: 2px;
+
+  border-radius: 99px;
+
+  background: linear-gradient(
+    90deg,
+    #3b82f6,
+    #8b5cf6
+  );
+
+  transition: width 0.25s ease;
+}
+
+.navbar__desktop-menu a:hover::after {
+  width: 100%;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.navbar__github {
+  min-height: 40px;
+
+  padding: 0 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: #e9ecf3;
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar__github:hover {
+  background: rgba(99, 102, 241, 0.12);
+
+  border-color: rgba(99, 102, 241, 0.4);
+
+  transform: translateY(-1px);
+}
+
+.navbar__hamburger {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  cursor: pointer;
+}
+
+.navbar__hamburger span {
+  width: 20px;
+  height: 2px;
+
+  display: block;
+
+  margin: 4px auto;
+
+  border-radius: 99px;
+
+  background: #ffffff;
+
+  transition: 0.2s ease;
+}
+
+/* Overlay */
+
+.navbar__overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 1090;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  backdrop-filter: blur(3px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.navbar__overlay--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sidebar */
+
+.navbar__sidebar {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  z-index: 1100;
+
+  width: min(320px, 85vw);
+  height: 100dvh;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18, 21, 33, 0.98),
+      rgba(10, 12, 20, 0.99)
+    );
+
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    -20px 0 60px rgba(0, 0, 0, 0.3);
+
+  direction: rtl;
+
+  transform: translateX(100%);
+
+  transition: transform 0.32s cubic-bezier(
+    0.22,
+    1,
+    0.36,
+    1
+  );
+}
+
+.navbar__sidebar--open {
+  transform: translateX(0);
+}
+
+.navbar__sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 22px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.navbar__sidebar-title {
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.navbar__close {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: #ffffff;
+
+  font-size: 28px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar__close:hover {
+  background: rgba(255, 255, 255, 0.08);
+
+  transform: rotate(5deg);
+}
+
+.navbar__mobile-menu {
+  margin-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.navbar__mobile-menu a {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  color: #bec4d1;
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    padding-right 0.2s ease;
+}
+
+.navbar__mobile-menu a:hover {
+  color: #ffffff;
+
+  background: rgba(99, 102, 241, 0.08);
+
+  border-color: rgba(99, 102, 241, 0.15);
+
+  padding-right: 22px;
+}
+
+.navbar__sidebar-footer {
+  margin-top: auto;
+
+  padding-top: 24px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.navbar__sidebar-footer a {
+  width: 100%;
+  min-height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+
+  color: #ffffff;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.18);
+}
+
+/* Tablet */
+
+@media (max-width: 960px) {
+  .navbar__desktop-menu {
+    gap: 18px;
+  }
+
+  .navbar__desktop-menu a {
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .navbar__container {
+    width: min(100% - 24px, 1180px);
+
+    min-height: 64px;
+  }
+
+  .navbar__desktop-menu {
+    display: none;
+  }
+
+  .navbar__github {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: block;
+  }
+
+  .navbar__brand {
+    font-size: 17px;
+  }
+}
+
+/* Very small screens */
+
+@media (max-width: 380px) {
+  .navbar__sidebar {
+    width: 88vw;
+
+    padding: 20px;
+  }
+}
