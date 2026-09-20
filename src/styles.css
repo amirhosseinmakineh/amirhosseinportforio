@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  color-scheme: dark;
+  font-family: Vazirmatn, IRANSansX, Tahoma, Arial, sans-serif;
+  background: #070910;
+  scroll-behavior: smooth;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; min-width: 320px; background: #070910; }
+body { color: #f8fafc; }
+button, a { font: inherit; }
+::selection { color: #fff; background: rgba(99, 102, 241, .75); }

@@ -17,39 +17,28 @@ export class SkillsComponent {
     {
       title: 'زبان برنامه‌نویسی',
       subtitle: 'Programming Language',
-      skills: [
-        'C#'
-      ]
+      skills: ['C#', 'OOP', 'AOP']
     },
     {
       title: 'تکنولوژی‌ها',
       subtitle: 'Backend Technologies',
       skills: [
-        'ASP.NET Core',
-        'SQL Server',
-        'Hangfire',
-        'SignalR'
+        'ASP.NET Core', 'REST API', 'SQL Server'
       ]
     },
     {
       title: 'معماری و الگوها',
       subtitle: 'Architecture & Patterns',
       skills: [
-        'CQRS',
-        'Repository Pattern',
-        'Unit of Work',
-        'Strategy Pattern',
-        'SOLID'
+        'Layered Architecture', 'CQRS', 'Repository Pattern',
+        'Strategy Pattern', 'State Pattern', 'Builder Pattern',
+        'Specification Pattern', 'SOLID'
       ]
     },
     {
-      title: 'برنامه‌نویسی ناهمگام',
-      subtitle: 'Asynchronous Programming',
-      skills: [
-        'Async / Await',
-        'Task',
-        'Asynchronous Programming'
-      ]
+      title: 'طراحی API',
+      subtitle: 'Backend Engineering',
+      skills: ['RESTful Services', 'Clean Code', 'Maintainability']
     },
     {
       title: 'مدیریت سورس',

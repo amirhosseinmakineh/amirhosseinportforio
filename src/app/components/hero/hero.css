@@ -146,6 +146,28 @@
   flex-wrap: wrap;
 }
 
+.hero__facts {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hero__facts div {
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .025);
+}
+
+.hero__facts strong, .hero__facts span { display: block; }
+.hero__facts strong { color: #fff; font-size: 16px; }
+.hero__facts span { margin-top: 5px; color: #747d8f; font-size: 10px; }
+
+@media (max-width: 560px) {
+  .hero__facts { grid-template-columns: 1fr; }
+}
+
 .hero__button {
   min-height: 48px;
 

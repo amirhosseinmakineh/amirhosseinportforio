@@ -1,0 +1,4 @@
+.footer { padding:32px 16px 40px; text-align:center; direction:rtl; background:#070910; border-top:1px solid rgba(255,255,255,.05); }
+.footer span { color:#fff; font-weight:900; }
+.footer p { margin:8px 0; color:#7f8796; font-size:13px; }
+.footer small { color:#4f5664; font-size:11px; }
