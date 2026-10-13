@@ -13,39 +13,39 @@ interface SkillGroup {
   styleUrl: './technologies.css'
 })
 export class SkillsComponent {
-  skillGroups: SkillGroup[] = [
+  readonly skillGroups: SkillGroup[] = [
     {
-      title: 'زبان برنامه‌نویسی',
-      subtitle: 'Programming Language',
-      skills: ['C#', 'OOP', 'AOP']
+      title: 'Backend و API',
+      subtitle: 'Backend Engineering',
+      skills: ['C#', 'ASP.NET Core', 'REST API', 'EF Core', 'SQL Server']
     },
     {
-      title: 'تکنولوژی‌ها',
-      subtitle: 'Backend Technologies',
-      skills: [
-        'ASP.NET Core', 'REST API', 'SQL Server'
-      ]
+      title: 'Frontend محصول',
+      subtitle: 'Product Interfaces',
+      skills: ['Angular 20', 'Angular Material', 'SSR', 'Responsive UI', 'SignalR']
     },
     {
-      title: 'معماری و الگوها',
+      title: 'معماری و کدنویسی',
       subtitle: 'Architecture & Patterns',
       skills: [
-        'Layered Architecture', 'CQRS', 'Repository Pattern',
-        'Strategy Pattern', 'State Pattern', 'Builder Pattern',
-        'Specification Pattern', 'SOLID'
+        'Layered Architecture',
+        'CQRS',
+        'Repository',
+        'Strategy',
+        'Specification',
+        'SOLID',
+        'Clean Code'
       ]
     },
     {
-      title: 'طراحی API',
-      subtitle: 'Backend Engineering',
-      skills: ['RESTful Services', 'Clean Code', 'Maintainability']
+      title: 'ابزارها و سرویس‌ها',
+      subtitle: 'Tools & Services',
+      skills: ['Git', 'Hangfire', 'Toastr', 'Web Crawler', 'Image Storage']
     },
     {
-      title: 'مدیریت سورس',
-      subtitle: 'Version Control',
-      skills: [
-        'Git'
-      ]
+      title: 'تجربه محصول',
+      subtitle: 'Product Thinking',
+      skills: ['Admin Panel', 'Role Management', 'Authentication', 'Orders', 'Installments']
     }
   ];
 }
