@@ -1,67 +1,32 @@
-<section
-  id="skills"
-  class="skills"
->
+<section id="skills" class="skills">
   <div class="skills__container">
-
-    <div class="skills__header">
-
-      <span class="skills__eyebrow">
-        SKILLS
-      </span>
-
-      <h2>
-        مهارت‌ها و تکنولوژی‌ها
-      </h2>
-
+    <header class="skills__header">
+      <span class="skills__eyebrow">CAPABILITIES</span>
+      <h2>ابزارهایی برای ساخت محصول واقعی</h2>
       <p>
-        مجموعه‌ای از تکنولوژی‌ها، الگوهای طراحی و مفاهیمی
-        که در توسعه سیستم‌های Backend با آن‌ها کار می‌کنم.
+        مهارت‌هایی که در داشبورد کلینیک، پلتفرم MayaCar و سرویس‌های Backend
+        برای حل مسئله‌های واقعی استفاده کرده‌ام.
       </p>
-
-    </div>
+    </header>
 
     <div class="skills__grid">
-
       @for (group of skillGroups; track group.title) {
-
         <article class="skill-card">
-
           <div class="skill-card__header">
-
             <div>
-              <h3>
-                {{ group.title }}
-              </h3>
-
-              <span>
-                {{ group.subtitle }}
-              </span>
+              <h3>{{ group.title }}</h3>
+              <span>{{ group.subtitle }}</span>
             </div>
-
-            <div class="skill-card__icon">
-              &lt;/&gt;
-            </div>
-
+            <div class="skill-card__icon">&lt;/&gt;</div>
           </div>
 
           <div class="skill-card__items">
-
             @for (skill of group.skills; track skill) {
-
-              <span class="skill-card__item">
-                {{ skill }}
-              </span>
-
+              <span class="skill-card__item">{{ skill }}</span>
             }
-
           </div>
-
         </article>
-
       }
-
     </div>
-
   </div>
 </section>
