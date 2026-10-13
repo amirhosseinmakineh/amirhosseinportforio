@@ -1,13 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
 :root {
   color-scheme: dark;
-  font-family: Vazirmatn, IRANSansX, Tahoma, Arial, sans-serif;
+  font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
   background: #070910;
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body { margin: 0; min-width: 320px; background: #070910; }
-body { color: #f8fafc; }
-button, a { font: inherit; }
-::selection { color: #fff; background: rgba(99, 102, 241, .75); }
+html,
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #070910;
+}
+
+body {
+  color: #f8fafc;
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a,
+input,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 4px;
+}
+
+::selection {
+  color: #fff;
+  background: rgba(99, 102, 241, .75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
