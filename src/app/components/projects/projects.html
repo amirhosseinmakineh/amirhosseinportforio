@@ -1,158 +1,124 @@
-<section
-  id="projects"
-  class="projects"
->
+<section id="projects" class="projects">
   <div class="projects__container">
-
-    <div class="projects__header">
-      <h2>
-        پروژه‌ها و نمونه‌کارها
-      </h2>
-
+    <header class="section-heading">
+      <span class="section-heading__eyebrow">SELECTED WORK</span>
+      <h2>پروژه‌هایی که برایشان راه‌حل ساخته‌ام</h2>
       <p>
-        مجموعه‌ای از پروژه‌های نرم‌افزاری و طراحی وب
-        که در توسعه آن‌ها فعالیت داشته‌ام.
+        نمونه‌هایی از محصولاتی که در آن‌ها روی طراحی تجربه کاربری، توسعه فرانت‌اند
+        و پیاده‌سازی سرویس‌های قابل نگهداری کار کرده‌ام.
       </p>
-    </div>
+    </header>
 
-    <div class="projects__list">
-
-      <!-- API Management -->
-
-      <article class="project">
-
-        <div class="project__image">
-          <img
-            src="/images/projects/api-management/cover.webp"
-            alt="سامانه مدیریت APIهای سازمان"
-          >
-        </div>
-
-        <div class="project__content">
-
-          <span class="project__number">
-            01
-          </span>
-
-          <h3>
-            سامانه مدیریت APIهای سازمان
-          </h3>
-
-          <p>
-            سامانه‌ای برای زمان‌بندی، اجرا، مدیریت و
-            مانیتورینگ APIهای سازمان با استفاده از
-            Hangfire و ASP.NET Core.
-          </p>
-
-          <div class="project__tags">
-            <span>.NET</span>
-            <span>Hangfire</span>
-            <span>SQL Server</span>
-            <span>REST API</span>
+    <div class="projects__grid">
+      <article class="project-card project-card--clinic">
+        <div class="project-card__visual">
+          <span class="project-card__orb project-card__orb--one"></span>
+          <span class="project-card__orb project-card__orb--two"></span>
+          <div class="project-card__window">
+            <div class="project-card__window-bar"><i></i><i></i><i></i></div>
+            <div class="project-card__dashboard">
+              <span class="project-card__dashboard-line project-card__dashboard-line--wide"></span>
+              <span class="project-card__dashboard-line"></span>
+              <span class="project-card__dashboard-line project-card__dashboard-line--short"></span>
+              <div class="project-card__dashboard-cards"><b></b><b></b><b></b></div>
+            </div>
           </div>
-
-          <a
-            routerLink="/projects/api-management"
-            class="project__link"
-          >
-            مشاهده پروژه
-            <span>←</span>
-          </a>
-
+          <span class="project-card__label">01 / PRODUCT DASHBOARD</span>
         </div>
 
-      </article>
-
-      <!-- Lead Management -->
-
-      <article class="project project--reverse">
-
-        <div class="project__image">
-          <img
-            src="/images/projects/lead-management/cover.webp"
-            alt="سیستم مدیریت لید"
-          >
-        </div>
-
-        <div class="project__content">
-
-          <span class="project__number">
-            02
-          </span>
-
-          <h3>
-            سیستم مدیریت لید
-          </h3>
-
+        <div class="project-card__body">
+          <div class="project-card__meta">
+            <span class="project-card__type">Angular application</span>
+            <span class="project-card__status">در حال توسعه</span>
+          </div>
+          <h3>داشبورد کلینیک دندانپزشکی دلخند</h3>
           <p>
-            سیستم مدیریت، تخصیص، پیگیری و کنترل لیدها
-            همراه با نوتیفیکیشن‌های Real-time و پنل مشاوران.
+            یک پنل سازمانی برای مدیریت ادمین، مشاور، لیدها، پروفایل مشاوران و
+            احراز هویت؛ با مسیرهای جدا برای ورود، ثبت‌نام و داشبوردهای اختصاصی.
           </p>
-
-          <div class="project__tags">
-            <span>ASP.NET Core</span>
-            <span>Angular</span>
+          <div class="project-card__tags">
+            <span>Angular 20</span>
+            <span>Angular Material</span>
             <span>SignalR</span>
-            <span>EF Core</span>
+            <span>Toastr</span>
           </div>
-
-          <a
-            routerLink="/projects/lead-management"
-            class="project__link"
-          >
-            مشاهده پروژه
-            <span>←</span>
+          <a class="project-card__link" href="https://github.com/amirhosseinmakineh/dentalClinickDashboard" target="_blank" rel="noopener noreferrer">
+            مشاهده ریپو
+            <span>↗</span>
           </a>
-
         </div>
-
       </article>
 
-      <!-- WordPress -->
-
-      <article class="project">
-
-        <div class="project__image">
-          <img
-            src="/images/projects/wordpress/cover.webp"
-            alt="نمونه کارهای وردپرس"
-          >
+      <article class="project-card project-card--maya">
+        <div class="project-card__visual">
+          <span class="project-card__orb project-card__orb--one"></span>
+          <span class="project-card__orb project-card__orb--two"></span>
+          <div class="project-card__car-shape"><span></span><span></span></div>
+          <div class="project-card__price-card">
+            <small>آخرین قیمت</small>
+            <strong>مدیریت خودرو</strong>
+            <span>Company · Model · Order</span>
+          </div>
+          <span class="project-card__label">02 / AUTOMOTIVE PLATFORM</span>
         </div>
 
-        <div class="project__content">
-
-          <span class="project__number">
-            03
-          </span>
-
-          <h3>
-            نمونه‌کارهای WordPress
-          </h3>
-
+        <div class="project-card__body">
+          <div class="project-card__meta">
+            <span class="project-card__type">Full product frontend</span>
+            <span class="project-card__status">Angular SSR</span>
+          </div>
+          <h3>MayaCar؛ پلتفرم مدیریت خودرو</h3>
           <p>
-            مجموعه‌ای از سایت‌های شرکتی، فروشگاهی و
-            Landing Pageهای طراحی‌شده با WordPress.
+            محصولی با صفحات عمومی، لیست و جزئیات خودرو، پنل کاربر، سفارش و اقساط
+            و پنل ادمین برای مدیریت خودرو، دسته‌بندی، شرکت، مدل و سفارش‌ها.
           </p>
-
-          <div class="project__tags">
-            <span>WordPress</span>
-            <span>WooCommerce</span>
-            <span>Elementor</span>
+          <div class="project-card__tags">
+            <span>Angular 20</span>
+            <span>SSR</span>
+            <span>Jalali Datepicker</span>
+            <span>Admin Panel</span>
           </div>
-
-          <a
-            routerLink="/projects/wordpress"
-            class="project__link"
-          >
-            مشاهده نمونه‌کارها
-            <span>←</span>
+          <a class="project-card__link" href="https://github.com/amirhosseinmakineh/mayaCarFrontProduc" target="_blank" rel="noopener noreferrer">
+            مشاهده ریپو
+            <span>↗</span>
           </a>
-
         </div>
-
       </article>
 
-    </div>
+      <article class="project-card project-card--crawler">
+        <div class="project-card__visual">
+          <span class="project-card__orb project-card__orb--one"></span>
+          <span class="project-card__orb project-card__orb--two"></span>
+          <div class="project-card__terminal">
+            <span><em>GET</em> /api/car</span>
+            <span><em>SYNC</em> crawler</span>
+            <span><em>200</em> prices updated</span>
+          </div>
+          <span class="project-card__label">03 / BACKEND PLATFORM</span>
+        </div>
 
+        <div class="project-card__body">
+          <div class="project-card__meta">
+            <span class="project-card__type">ASP.NET Core API</span>
+            <span class="project-card__status">Production ready</span>
+          </div>
+          <h3>CarShow؛ سرویس داده و قیمت خودرو</h3>
+          <p>
+            سرویس Backend برای مدیریت خودرو، شرکت، مدل، دسته‌بندی، سفارش و
+            خزنده قیمت؛ با ساختار لایه‌ای، احراز هویت و ذخیره‌سازی تصاویر.
+          </p>
+          <div class="project-card__tags">
+            <span>ASP.NET Core</span>
+            <span>EF Core</span>
+            <span>SQL Server</span>
+            <span>Web Crawler</span>
+          </div>
+          <a class="project-card__link" href="https://github.com/amirhosseinmakineh/CarShow" target="_blank" rel="noopener noreferrer">
+            مشاهده ریپو
+            <span>↗</span>
+          </a>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
