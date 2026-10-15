@@ -305,3 +305,93 @@
   .project-card__body { padding: 24px 20px; }
   .project-card__meta { align-items: flex-start; flex-direction: column; }
 }
+
+
+/* Additional portfolio categories and product previews */
+.project-card--easytime .project-card__visual {
+  background: linear-gradient(145deg, #244047, #14282e 58%, #10151c);
+}
+
+.project-card--wordpress .project-card__visual {
+  background: linear-gradient(145deg, #45344e, #292038 58%, #13131d);
+}
+
+.project-card__feature {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: min(85%, 340px);
+  margin: auto;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 18px;
+  background: rgba(8, 15, 23, .72);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, .24);
+}
+
+.project-card__feature-icon {
+  color: #a5f3fc;
+  font-size: 32px;
+}
+
+.project-card__feature strong {
+  color: #fff;
+  font-size: 25px;
+  direction: ltr;
+}
+
+.project-card__feature small {
+  color: #b9c1d0;
+  font-size: 12px;
+}
+
+.project-card__slots {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.project-card__slots i {
+  flex: 1;
+  height: 32px;
+  border: 1px solid rgba(165, 243, 252, .25);
+  border-radius: 8px;
+  background: rgba(165, 243, 252, .12);
+}
+
+.project-card__feature--web .project-card__feature-icon {
+  color: #f9a8d4;
+}
+
+.project-card__web-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.project-card__web-lines i {
+  height: 8px;
+  border-radius: 6px;
+  background: rgba(249, 168, 212, .3);
+}
+
+.project-card__web-lines i:nth-child(2) {
+  width: 72%;
+}
+
+.project-card__web-lines i:nth-child(3) {
+  width: 48%;
+}
+
+.project-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 22px;
+}
