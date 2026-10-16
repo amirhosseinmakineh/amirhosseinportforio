@@ -1,223 +1,134 @@
 .contract {
-
-  padding:100px 0;
-
-  background:#090b12;
-
-  color:#fff;
-
-  direction:rtl;
+  padding: 100px 0;
+  background: #090b12;
+  color: #fff;
+  direction: rtl;
 }
-
 
 .contract__container {
-
-  width:min(1050px,calc(100% - 32px));
-
-  margin:auto;
+  width: min(1050px,calc(100% - 32px));
+  margin: auto;
 }
-
 
 .contract__heading {
-
-  max-width:760px;
+  max-width: 760px;
 }
-
 
 .contract__eyebrow {
-
-  color:#a5b4fc;
-
-  font-size:11px;
-
-  font-weight:800;
-
-  letter-spacing:2px;
+  color: #a5b4fc;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
 }
-
 
 .contract__heading h2 {
-
-  font-size:clamp(30px,4vw,48px);
-
-  margin:14px 0;
+  font-size: clamp(30px,4vw,48px);
+  margin: 14px 0;
 }
-
 
 .contract__heading p,.contract__notice,.contract__item p,.contract__end p {
-
-  color:#aab1c1;
-
-  line-height:2;
+  color: #aab1c1;
+  line-height: 2;
 }
-
 
 .contract__summary {
-
-  display:grid;
-
-  grid-template-columns:repeat(4,minmax(0,1fr));
-
-  gap:14px;
-
-  margin:36px 0;
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 14px;
+  margin: 36px 0;
 }
-
 
 .contract__summary div {
-
-  padding:24px 14px;
-
-  border:1px solid rgba(255,255,255,.09);
-
-  border-radius:17px;
-
-  background:#151a25;
-
-  text-align:center;
+  padding: 24px 14px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 17px;
+  background: #151a25;
+  text-align: center;
 }
-
 
 .contract__summary strong {
-
-  display:block;
-
-  color:#c7d2fe;
-
-  font-size:28px;
+  display: block;
+  color: #c7d2fe;
+  font-size: 28px;
 }
-
 
 .contract__summary span {
-
-  display:block;
-
-  margin-top:10px;
-
-  color:#b8c0d0;
-
-  font-size:12px;
-
-  line-height:1.8;
+  display: block;
+  margin-top: 10px;
+  color: #b8c0d0;
+  font-size: 12px;
+  line-height: 1.8;
 }
-
 
 .contract__notice {
-
-  padding:16px 20px;
-
-  background:#181d2a;
-
-  border-right:3px solid #818cf8;
-
-  border-radius:10px;
-
-  font-size:13px;
-
-  margin-bottom:28px;
+  padding: 16px 20px;
+  background: #181d2a;
+  border-right: 3px solid #818cf8;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 28px;
 }
-
 
 .contract__item {
-
-  border:1px solid rgba(255,255,255,.09);
-
-  border-radius:12px;
-
-  background:#111621;
-
-  margin-bottom:10px;
-
-  overflow:hidden;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 12px;
+  background: #111621;
+  margin-bottom: 10px;
+  overflow: hidden;
 }
-
 
 .contract__item summary {
-
-  padding:18px 22px;
-
-  cursor:pointer;
-
-  font-weight:700;
-
-  color:#e6e9f7;
+  padding: 18px 22px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #e6e9f7;
 }
 
-
-.contract__item summary:hover {
-
-  color:#a5b4fc;
+.contract__item summary: hover {
+  color: #a5b4fc;
 }
-
 
 .contract__item[open] summary {
-
-  border-bottom:1px solid rgba(255,255,255,.07);
+  border-bottom: 1px solid rgba(255,255,255,.07);
 }
-
 
 .contract__item p {
-
-  padding:4px 22px 20px;
-
-  margin:0;
-
-  font-size:14px;
+  padding: 4px 22px 20px;
+  margin: 0;
+  font-size: 14px;
 }
-
 
 .contract__end {
-
-  margin-top:32px;
-
-  padding:28px;
-
-  border:1px solid rgba(129,140,248,.25);
-
-  border-radius:18px;
-
-  background:#131829;
+  margin-top: 32px;
+  padding: 28px;
+  border: 1px solid rgba(129,140,248,.25);
+  border-radius: 18px;
+  background: #131829;
 }
-
 
 .contract__end h3 {
-
-  margin:0 0 10px;
+  margin: 0 0 10px;
 }
-
 
 .contract__end a {
-
-  display:inline-flex;
-
-  gap:10px;
-
-  margin-top:12px;
-
-  color:#c7d2fe;
-
-  font-weight:700;
-
-  text-decoration:none;
+  display: inline-flex;
+  gap: 10px;
+  margin-top: 12px;
+  color: #c7d2fe;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-
-@media(max-width:720px) {
-
+@media(max-width: 720px) {
 .contract {
-
-  padding:75px 0;
+  padding: 75px 0;
 }
-
 
 .contract__summary {
-
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
 }
 
-
 .contract__summary strong {
-
-  font-size:23px;
+  font-size: 23px;
   };
 }
