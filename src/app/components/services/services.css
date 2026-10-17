@@ -51,7 +51,7 @@
   transition: border-color .2s,transform .2s;
 }
 
-.services__card: hover {
+.services__card:hover {
   border-color: #818cf8;
   transform: translateY(-3px);
 }
