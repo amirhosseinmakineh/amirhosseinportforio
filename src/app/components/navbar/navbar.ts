@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, Renderer2 } from '@angular/core';
+import { Component, HostListener, inject, Renderer2 } from '@angular/core';
+import { LanguageService } from '../../i18n/language.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,11 @@ import { Component, HostListener, Renderer2 } from '@angular/core';
 })
 export class NavbarComponent {
   isMenuOpen = false;
+  readonly language = inject(LanguageService);
+
+  toggleLanguage(): void {
+    this.language.toggle();
+  }
 
   constructor(private renderer: Renderer2) {}
 
