@@ -22,6 +22,14 @@
     </nav>
 
     <div class="navbar__actions">
+      <button
+        class="navbar__language"
+        type="button"
+        [attr.aria-label]="language.current() === 'fa' ? 'Switch to English' : 'تغییر زبان به فارسی'"
+        (click)="toggleLanguage()"
+      >
+        {{ language.current() === 'fa' ? 'EN' : 'FA' }}
+      </button>
 
       <a
         class="navbar__github"
@@ -61,6 +69,13 @@
   aria-label="منوی موبایل"
 >
   <div class="navbar__sidebar-header">
+    <button
+      class="navbar__language"
+      type="button"
+      (click)="toggleLanguage(); closeMenu()"
+    >
+      {{ language.current() === 'fa' ? 'English' : 'فارسی' }}
+    </button>
 
     <span class="navbar__sidebar-title">
       منو
