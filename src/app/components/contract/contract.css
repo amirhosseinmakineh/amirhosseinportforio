@@ -119,16 +119,31 @@
   text-decoration: none;
 }
 
-@media(max-width: 720px) {
-.contract {
-  padding: 75px 0;
+@media (max-width: 720px) {
+  .contract {
+    padding: 75px 0;
+  }
+
+  .contract__summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contract__summary strong {
+    font-size: 23px;
+  }
 }
 
-.contract__summary {
-  grid-template-columns: repeat(2,minmax(0,1fr));
+.contract__item {
+  border-radius: 8px;
+  border-color: rgba(143, 160, 246, 0.14);
+  background: linear-gradient(130deg, #10182a, #0c1322);
 }
 
-.contract__summary strong {
-  font-size: 23px;
-  };
+.contract__item[open] {
+  border-color: rgba(143, 160, 246, 0.35);
+}
+
+.contract__summary div {
+  border-radius: 10px;
+  background: #111b30;
 }
