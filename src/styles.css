@@ -120,3 +120,76 @@ section {
     box-shadow: 0 25px 70px rgba(4, 8, 23, 0.35);
   }
 }
+
+
+/* Cohesive premium visual system */
+:root {
+  --canvas: #070d19;
+  --panel: #101b30;
+  --line: rgba(149, 167, 242, 0.16);
+  --ink: #f7f9ff;
+  --muted: #aab7ce;
+}
+
+.navbar {
+  background: rgba(7, 13, 25, 0.86);
+  border-bottom-color: var(--line);
+}
+
+.navbar__brand {
+  letter-spacing: -0.5px;
+}
+
+.navbar__brand-dot {
+  background: #9ca8ff;
+}
+
+.about,
+.experience,
+.skills,
+.projects,
+.services,
+.contract,
+.contact {
+  background-color: var(--canvas);
+}
+
+.about__header h2,
+.skills__header h2,
+.section-heading h2,
+.services__heading h2,
+.contract__heading h2,
+.contact h2 {
+  letter-spacing: -0.8px;
+  line-height: 1.55;
+}
+
+.project-card,
+.skill-card,
+.services__card {
+  border-color: var(--line);
+  background-color: var(--panel);
+}
+
+.project-card__visual {
+  background-image:
+    radial-gradient(circle at 65% 35%, rgba(104, 112, 243, 0.24), transparent 58%),
+    linear-gradient(135deg, #162448, #0b1427);
+}
+
+.contact__panel {
+  border-radius: 12px;
+  border-color: rgba(157, 166, 255, 0.27);
+  background:
+    radial-gradient(circle at 85% 0%, rgba(89, 85, 225, 0.21), transparent 47%),
+    linear-gradient(120deg, #15213c, #0b1425);
+}
+
+@media (max-width: 768px) {
+  .projects,
+  .skills,
+  .services,
+  .contract {
+    padding-block: 75px;
+  }
+}
