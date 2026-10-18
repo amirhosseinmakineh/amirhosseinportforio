@@ -1,208 +1,56 @@
-<section
-  id="home"
-  class="hero"
->
+<section id="home" class="hero" dir="rtl">
+  <div class="hero__ambient hero__ambient--top" aria-hidden="true"></div>
+  <div class="hero__ambient hero__ambient--bottom" aria-hidden="true"></div>
+
   <div class="hero__container">
-
     <div class="hero__content">
-
-      <div class="hero__badge">
-        <span class="hero__badge-dot"></span>
-
-        <span>
-          آماده همکاری ریموت از تهران
-        </span>
-      </div>
-
-      <p class="hero__intro">
-        سلام، من امیرحسین مکینه هستم
-      </p>
+      <p class="hero__eyebrow"><span></span> AMIRHOSSEIN MAKINEH / DIGITAL ENGINEERING</p>
 
       <h1 class="hero__title">
-        توسعه‌دهنده
-        <span>Backend</span>
+        ایده‌های بزرگ،
+        <span>راهکارهای دیجیتال</span>
+        ماندگار.
       </h1>
 
       <p class="hero__description">
-        توسعه‌دهنده دات‌نت با ۳ سال تجربه در طراحی و توسعه سرویس‌های پایدار،
-        معماری چندلایه و APIهای قابل نگهداری با C# و ASP.NET Core.
+        من امیرحسین مکینه هستم؛ توسعه‌دهنده نرم‌افزار و وب.
+        از تحلیل نیازهای کسب‌وکار و طراحی تجربه کاربری تا توسعه
+        سامانه‌های اختصاصی با ASP.NET Core و Angular همراه شما هستم.
       </p>
 
-      <div class="hero__facts" aria-label="اطلاعات حرفه‌ای">
-        <div><strong>۳+</strong><span>سال تجربه</span></div>
-        <div><strong>تهران</strong><span>موقعیت فعلی</span></div>
-        <div><strong>Remote</strong><span>نوع همکاری</span></div>
-      </div>
-
       <div class="hero__actions">
-
-        <button
-          type="button"
-          class="hero__button hero__button--primary"
-          (click)="scrollToProjects()"
-        >
-          مشاهده پروژه‌ها
-
-          <span>
-            ←
-          </span>
-        </button>
-
-        <a
-          class="hero__button hero__button--secondary"
-          href="mailto:amirhosseinmakineh1379@gmail.com"
-        >
-          تماس با من
+        <a class="hero__button hero__button--primary" href="#projects">
+          مشاهده پروژه‌ها <span aria-hidden="true">↗</span>
         </a>
+        <a class="hero__button hero__button--secondary" href="#contact">
+          شروع همکاری <span aria-hidden="true">←</span>
+        </a>
+      </div>
 
+      <div class="hero__facts" aria-label="زمینه‌های تخصصی">
+        <div><strong>01</strong><span>توسعه اختصاصی</span></div>
+        <div><strong>02</strong><span>طراحی UI/UX</span></div>
+        <div><strong>03</strong><span>راهکارهای کسب‌وکار</span></div>
       </div>
     </div>
 
-    <div class="hero__visual">
-
-      <div class="hero__glow hero__glow--one"></div>
-
-      <div class="hero__glow hero__glow--two"></div>
-
-      <div class="hero__code-card">
-
-        <div class="hero__code-header">
-
-          <div class="hero__code-dots">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <span class="hero__code-file">
-            Program.cs
-          </span>
-
-        </div>
-
-        <div class="hero__code-body">
-
-          <div class="code-line">
-            <span class="code-keyword">
-              var
-            </span>
-
-            <span>
-              builder =
-            </span>
-
-            <span class="code-type">
-              WebApplication
-            </span>
-
-            <span>
-              .CreateBuilder(args);
-            </span>
-          </div>
-
-          <div class="code-line code-line--space">
-          </div>
-
-          <div class="code-line">
-            <span>
-              builder.Services.
-            </span>
-
-            <span class="code-method">
-              AddApplication
-            </span>
-
-            <span>
-              ();
-            </span>
-          </div>
-
-          <div class="code-line">
-
-            <span>
-              builder.Services.
-            </span>
-
-            <span class="code-method">
-              AddInfrastructure
-            </span>
-
-            <span>
-              ();
-            </span>
-
-          </div>
-
-          <div class="code-line code-line--space">
-          </div>
-
-          <div class="code-line">
-
-            <span class="code-keyword">
-              var
-            </span>
-
-            <span>
-              app = builder.
-            </span>
-
-            <span class="code-method">
-              Build
-            </span>
-
-            <span>
-              ();
-            </span>
-
-          </div>
-
-          <div class="code-line">
-
-            <span>
-              app.
-            </span>
-
-            <span class="code-method">
-              MapControllers
-            </span>
-
-            <span>
-              ();
-            </span>
-
-          </div>
-
-          <div class="code-line">
-
-            <span>
-              app.
-            </span>
-
-            <span class="code-method">
-              Run
-            </span>
-
-            <span>
-              ();
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="hero__status">
-
-          <span class="hero__status-dot"></span>
-
-          <span>
-            Backend is running
-          </span>
-
-        </div>
-
+    <div class="hero__visual" aria-label="نمای گرافیکی لایه‌های طراحی و توسعه">
+      <div class="hero__orbit hero__orbit--outer"></div>
+      <div class="hero__orbit hero__orbit--inner"></div>
+      <div class="hero__core">
+        <div class="hero__core-face hero__core-face--front"></div>
+        <div class="hero__core-face hero__core-face--back"></div>
+        <div class="hero__core-face hero__core-face--left"></div>
+        <div class="hero__core-face hero__core-face--right"></div>
+        <div class="hero__core-face hero__core-face--top"></div>
+        <div class="hero__core-face hero__core-face--bottom"></div>
       </div>
-
+      <span class="hero__visual-label hero__visual-label--one">DESIGN SYSTEM</span>
+      <span class="hero__visual-label hero__visual-label--two">CLEAN ARCHITECTURE</span>
+      <span class="hero__visual-label hero__visual-label--three">DIGITAL EXPERIENCE</span>
+      <span class="hero__visual-caption">DESIGN × DEVELOPMENT</span>
     </div>
-
   </div>
+
+  <a class="hero__scroll" href="#about">برای کشف بیشتر اسکرول کنید <span aria-hidden="true">↓</span></a>
 </section>
