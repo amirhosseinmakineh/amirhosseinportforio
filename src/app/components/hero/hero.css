@@ -283,8 +283,13 @@
   .hero__title { font-size: clamp(36px, 9vw, 52px); letter-spacing: -1px; }
   .hero__description { font-size: 14px; }
   .hero__visual { min-height: 350px; }
-  .hero__core { transform: scale(0.68) rotateX(-23deg) rotateY(38deg); }
-  .hero__core-face { inset: 20px; }
+  .hero__core { width: 145px; height: 145px; }
+  .hero__core-face--front { transform: translateZ(72.5px); }
+  .hero__core-face--back { transform: rotateY(180deg) translateZ(72.5px); }
+  .hero__core-face--left { transform: rotateY(-90deg) translateZ(72.5px); }
+  .hero__core-face--right { transform: rotateY(90deg) translateZ(72.5px); }
+  .hero__core-face--top { transform: rotateX(90deg) translateZ(72.5px); }
+  .hero__core-face--bottom { transform: rotateX(-90deg) translateZ(72.5px); }
   .hero__facts { margin-top: 42px; gap: 9px; }
   .hero__visual-label { font-size: 8px; padding: 8px; }
   .hero__scroll { width: calc(100% - 32px); }
