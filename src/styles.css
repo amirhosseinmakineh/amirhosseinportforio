@@ -193,3 +193,49 @@ section {
     padding-block: 75px;
   }
 }
+
+html[lang="en"] body {
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+}
+
+html[lang="en"] .hero,
+html[lang="en"] .about,
+html[lang="en"] .experience,
+html[lang="en"] .skills,
+html[lang="en"] .projects,
+html[lang="en"] .services,
+html[lang="en"] .contract,
+html[lang="en"] .contact,
+html[lang="en"] .footer {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] .services__table {
+  text-align: left;
+}
+
+html[lang="en"] .hero__eyebrow {
+  direction: ltr;
+}
+
+html[lang="en"] .about__lead {
+  border-right: 0;
+  border-left: 2px solid #6366f1;
+  padding-right: 0;
+  padding-left: 22px;
+}
+
+html[lang="en"] .about__resume {
+  border-right: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+  padding-right: 0;
+  padding-left: 30px;
+}
+
+@media (max-width: 900px) {
+  html[lang="en"] .about__resume {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
