@@ -428,3 +428,27 @@
     padding: 20px;
   }
 }
+
+.navbar__language {
+  min-width: 50px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(148, 161, 255, 0.4);
+  border-radius: 8px;
+  background: rgba(120, 131, 255, 0.1);
+  color: #e5eaff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.navbar__language:hover {
+  background: rgba(120, 131, 255, 0.2);
+}
+
+html[lang="en"] .navbar,
+html[lang="en"] .navbar__sidebar,
+html[lang="en"] .navbar__mobile-menu,
+html[lang="en"] .navbar__mobile-menu a {
+  direction: ltr;
+}
