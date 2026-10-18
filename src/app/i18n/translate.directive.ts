@@ -35,11 +35,13 @@ export class TranslateDirective {
       const original = this.originals.get(textNode) ?? textNode.textContent ?? '';
       this.originals.set(textNode, original);
 
-      const trimmed = original.trim();
-      const translation = ENGLISH_COPY[trimmed];
+      const normalized = original.replace(/\\s+/g, ' ').trim();
+      const translation = ENGLISH_COPY[normalized];
 
       if (language === 'en' && translation) {
-        textNode.textContent = original.replace(trimmed, translation);
+        const leading = original.match(/^\\s*/)?.[0] ?? '';
+        const trailing = original.match(/\\s*$/)?.[0] ?? '';
+        textNode.textContent = leading + translation + trailing;
       } else {
         textNode.textContent = original;
       }
