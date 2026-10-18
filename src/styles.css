@@ -56,3 +56,67 @@ a:focus-visible {
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Shared visual language for the redesigned portfolio */
+:root {
+  --surface-deep: #060b16;
+  --surface-raised: #101a2c;
+  --accent-primary: #8291ff;
+  --accent-secondary: #6bbcff;
+  --text-muted: #a9b7d0;
+}
+
+html {
+  scroll-padding-top: 88px;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(60, 69, 154, 0.1), transparent 45%),
+    var(--surface-deep);
+}
+
+section {
+  scroll-margin-top: 70px;
+}
+
+.section-heading__eyebrow,
+.services__eyebrow,
+.contract__eyebrow {
+  letter-spacing: 2.5px;
+  color: var(--accent-primary);
+}
+
+.projects,
+.services,
+.contract {
+  position: relative;
+  isolation: isolate;
+}
+
+.projects::before,
+.services::before,
+.contract::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(1100px, 95vw);
+  height: 1px;
+  content: '';
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(129, 147, 245, 0.3), transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-card,
+  .services__card {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .project-card:hover,
+  .services__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(4, 8, 23, 0.35);
+  }
+}
