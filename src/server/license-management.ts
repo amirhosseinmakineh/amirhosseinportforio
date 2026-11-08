@@ -13,7 +13,7 @@ class ApiError extends Error {
 /** Same-origin admin gateway. Upstream cookies and CSRF tokens stay on the server. */
 export function licenseManagementRouter(options: Options = {}) {
   const router = express.Router();
-  const production = options.production ?? process.env['NODE_ENV'] === 'production';
+  const production = options.production ?? !['development', 'test'].includes(process.env['NODE_ENV'] ?? '');
   let serverUrl: string | undefined;
   let allowedOrigin: string | undefined;
   try {
