@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:amirhosseinportforio": "node dist/amirhosseinportforio/server/server.mjs",
-    "start:dev": "ng serve"
+    "start:dev": "ng serve",
+    "test:licensing": "tsc src/server/license-management.ts --outDir .server-tests --module commonjs --target es2022 --esModuleInterop --skipLibCheck --strict && node --test tests/license-management.test.mjs"
   },
   "prettier": {
     "printWidth": 100,

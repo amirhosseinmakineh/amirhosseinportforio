@@ -65,7 +65,7 @@
   display: flex;
   align-items: center;
 
-  gap: 30px;
+  gap: 16px;
 }
 
 .navbar__desktop-menu a {
@@ -395,7 +395,7 @@
 
 /* Mobile */
 
-@media (max-width: 768px) {
+@media (max-width: 1150px) {
   .navbar__container {
     width: min(100% - 24px, 1180px);
 

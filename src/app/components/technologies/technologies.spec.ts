@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Technologies } from './technologies';
+import { SkillsComponent as Technologies } from './technologies';
 
 describe('Technologies', () => {
   let component: Technologies;

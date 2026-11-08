@@ -6,11 +6,18 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import { licenseManagementRouter } from './server/license-management';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
+
+app.use('/api/license-management', licenseManagementRouter());
+app.use('/admin/licenses', (_req, res, next) => {
+  res.set({ 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' });
+  next();
+});
 
 /**
  * Example Express Rest API endpoints can be defined here.

@@ -1,0 +1,84 @@
+<div class="manager" dir="rtl">
+  <header class="manager-header">
+    <a href="/" class="brand"><span class="brand-dot"></span>امیرحسین مکینه</a>
+    <a href="/">بازگشت به پورتفولیو <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <div class="page-heading">
+      <div><p class="eyebrow">پنل مدیریت</p><h1>مدیریت لایسنس‌ها</h1><p class="muted">دسترسی کلینیک‌ها و اعتبار سرویس‌ها را از یک‌جا مدیریت کنید.</p></div>
+      @if (authenticated()) { <button type="button" class="button secondary" (click)="logout()" [disabled]="busy()">خروج از حساب</button> }
+    </div>
+    <div aria-live="polite" class="messages">
+      @if (error()) { <p class="message error" role="alert">{{ error() }}</p> }
+      @if (notice()) { <p class="message success">{{ notice() }}</p> }
+    </div>
+    @if (!ready()) {
+      <section class="panel empty" aria-busy="true">در حال بررسی دسترسی…</section>
+    } @else if (!configured()) {
+      <section class="panel empty"><span class="large-symbol" aria-hidden="true">◇</span><h2>اتصال هنوز آماده نیست</h2><p class="muted">اتصال پورتفولیو به سرویس مرکزی لایسنس باید تکمیل شود.</p><button class="button secondary" type="button" (click)="initialize()" [disabled]="busy()">بررسی دوباره</button></section>
+    } @else if (!authenticated()) {
+      <section class="panel login-panel">
+        <div class="login-icon" aria-hidden="true">⌘</div><p class="eyebrow">دسترسی مدیر</p><h2>ورود به مدیریت لایسنس‌ها</h2><p class="muted">کلید مدیریت سرویس لایسنس را وارد کنید.</p>
+        <form (ngSubmit)="login()">
+          <label for="admin-key">کلید مدیریت</label>
+          <input id="admin-key" name="key" type="password" [(ngModel)]="key" required minlength="32" maxlength="4096" autocomplete="current-password" dir="ltr" [disabled]="busy()" />
+          <button class="button primary" type="submit" [disabled]="busy() || key.length < 32">{{ busy() ? 'در حال ورود…' : 'ورود به پنل' }}</button>
+        </form>
+      </section>
+    } @else {
+      <section class="stats" aria-label="خلاصه لایسنس‌ها">
+        <div class="panel"><span class="muted">کل لایسنس‌ها</span><strong>{{ licenses().length | number }}</strong></div>
+        <div class="panel"><span class="muted">فعال و معتبر</span><strong class="green">{{ activeCount() | number }}</strong></div>
+        <div class="panel"><span class="muted">نیازمند بررسی</span><strong>{{ licenses().length - activeCount() | number }}</strong></div>
+      </section>
+      @if (credentials()) {
+        <section class="panel credential-panel" aria-label="رمز نصب جدید">
+          <div class="section-heading"><h2>مشخصات نصب — {{ credentials()!.license.clinicName }}</h2><button class="text-button" type="button" (click)="credentials.set(null)">بستن و پاک‌کردن رمز</button></div>
+          <p>رمز نصب فقط همین بار نمایش داده می‌شود. آن را در محل امن نگه دارید و در تنظیمات کلینیک قرار دهید.</p>
+          <pre tabindex="0" dir="ltr">{{ configText() }}</pre><button class="button secondary" type="button" (click)="copy(configText())">کپی تنظیمات نصب</button>
+        </section>
+      }
+      @if (signingKey()) {
+        <section class="panel"><div class="section-heading"><h2>کلید عمومی تأیید لایسنس</h2><button class="text-button" type="button" (click)="signingKey.set(null)">بستن</button></div><pre tabindex="0" dir="ltr">{{ publicKeyText() }}</pre><button class="button secondary" type="button" (click)="copy(publicKeyText())">کپی کلید عمومی</button></section>
+      }
+      <div class="workspace">
+        <section class="panel create-panel">
+          <p class="eyebrow">نصب جدید</p><h2>ساخت لایسنس</h2><p class="muted">برای هر کلینیک و محیط، یک نصب جدا بسازید.</p>
+          <form #createForm="ngForm" (ngSubmit)="createLicense()">
+            <label for="clinic-name">نام کلینیک</label><input id="clinic-name" name="clinicName" [(ngModel)]="create.clinicName" required maxlength="200" [disabled]="busy()" />
+            <label for="product-id">شناسه محصول</label><input id="product-id" name="productId" [(ngModel)]="create.productId" required maxlength="100" dir="ltr" [disabled]="busy()" />
+            <label for="environment">محیط اجرا</label><input id="environment" name="environment" [(ngModel)]="create.environment" maxlength="100" dir="ltr" [disabled]="busy()" /><span class="hint">دقیقاً مطابق محیط اجرای بک‌اند، مانند Production یا Staging</span>
+            <label for="create-expiry">پایان اعتبار <span class="hint">(ساعت محلی دستگاه)</span></label><input id="create-expiry" name="expiresAt" type="datetime-local" [(ngModel)]="create.expiresAt" required [disabled]="busy()" />
+            <button class="button primary" type="submit" [disabled]="busy() || createForm.invalid">ساخت لایسنس و دریافت رمز</button>
+          </form>
+        </section>
+        <section class="panel list-panel" [attr.aria-busy]="busy()">
+          <div class="section-heading"><h2>لایسنس‌های ثبت‌شده</h2><div class="actions"><button class="text-button" type="button" (click)="showPublicKey()" [disabled]="busy()">کلید عمومی</button><button class="button secondary small" type="button" (click)="refresh()" [disabled]="busy()">تازه‌سازی</button></div></div>
+          <div class="filters"><input type="search" aria-label="جست‌وجوی لایسنس" placeholder="جست‌وجوی کلینیک یا شناسه نصب…" [ngModel]="query()" (ngModelChange)="query.set($event)" /><select aria-label="فیلتر وضعیت" [ngModel]="filter()" (ngModelChange)="filter.set($event)"><option value="all">همه وضعیت‌ها</option><option value="active">فعال</option><option value="disabled">غیرفعال</option><option value="expired">منقضی</option></select></div>
+          @if (!visible().length) { <div class="empty"><h3>{{ licenses().length ? 'نتیجه‌ای پیدا نشد' : 'هنوز لایسنسی ثبت نشده' }}</h3><p class="muted">{{ licenses().length ? 'عبارت جست‌وجو یا فیلتر را تغییر دهید.' : 'اولین لایسنس کلینیک را از فرم ساخت اضافه کنید.' }}</p></div> }
+          <div class="license-list">
+            @for (license of visible(); track license.id) {
+              <article class="license-card">
+                <div class="section-heading"><h3>{{ license.clinicName }}</h3><span class="badge" [class.active]="state(license) === 'active'" [class.expired]="state(license) === 'expired'">{{ stateLabel(license) }}</span></div>
+                <p class="identity" dir="ltr">{{ license.productId }} · {{ license.environment || '—' }}</p>
+                <dl><div><dt>شناسه نصب</dt><dd class="identity" dir="ltr">{{ license.installationId }}</dd></div><div><dt>پایان اعتبار</dt><dd>{{ date(license.expiresAt) }}</dd></div><div><dt>آخرین اتصال کلینیک</dt><dd>{{ date(license.lastSeenAt) }}</dd></div></dl>
+                @if (editing()?.id === license.id) {
+                  <form class="edit-form" #editForm="ngForm" (ngSubmit)="save()">
+                    <label [for]="'expiry-' + license.id">پایان اعتبار (ساعت محلی دستگاه)</label><input [id]="'expiry-' + license.id" name="editExpiry" type="datetime-local" [(ngModel)]="edit.expiresAt" required [disabled]="busy()" />
+                    <label class="check"><input type="checkbox" name="isActive" [(ngModel)]="edit.isActive" [disabled]="busy()" />لایسنس فعال باشد</label>
+                    <div class="actions"><button class="button primary small" type="submit" [disabled]="busy() || editForm.invalid">ذخیره تغییرات</button><button class="text-button" type="button" (click)="editing.set(null)" [disabled]="busy()">انصراف</button></div>
+                  </form>
+                } @else if (rotating()?.id === license.id) {
+                  <div class="confirm"><p>رمز قبلی باطل می‌شود. برای ادامه کار کلینیک باید رمز جدید را در تنظیماتش جایگزین کنید.</p><div class="actions"><button class="button danger small" type="button" (click)="rotate()" [disabled]="busy()">تأیید تعویض رمز</button><button class="text-button" type="button" (click)="rotating.set(null)" [disabled]="busy()">انصراف</button></div></div>
+                } @else {
+                  <div class="card-actions"><button class="button secondary small" type="button" (click)="rotating.set(null); beginEdit(license)" [disabled]="busy()">تمدید و تغییر وضعیت</button><button class="text-button" type="button" (click)="editing.set(null); rotating.set(license)" [disabled]="busy()">تعویض رمز نصب</button></div>
+                }
+              </article>
+            }
+          </div>
+        </section>
+      </div>
+      <p class="footnote">کلینیک هر ۵ دقیقه وضعیت لایسنس را بررسی می‌کند. اگر ارتباط قطع باشد، اعتبار امضاشده فعلی تا پایان مهلتش باقی می‌ماند.</p>
+    }
+  </main>
+</div>
