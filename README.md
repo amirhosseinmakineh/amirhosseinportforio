@@ -1,5 +1,9 @@
 # Amirhosseinportforio
 
+## License management
+
+The private management page is `/admin/licenses`. See [deployment and usage instructions](docs/license-management.md) to connect the portfolio's Node server to the central clinic licensing service. Run `npm run test:licensing` to verify the server gateway.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.27.
 
 ## Development server

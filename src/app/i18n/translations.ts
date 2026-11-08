@@ -3,6 +3,7 @@
  * keeping product names and technical terms unchanged.
  */
 export const ENGLISH_COPY: Record<string, string> = {
+  'مدیریت لایسنس‌ها': 'License management',
   'امیرحسین مکینه': 'Amirhossein Makineh',
   'خانه': 'Home',
   'درباره من': 'About',

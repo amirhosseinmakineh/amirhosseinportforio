@@ -44,7 +44,7 @@ export class NavbarComponent {
 
   @HostListener('window:resize')
   onWindowResize(): void {
-    if (window.innerWidth > 768 && this.isMenuOpen) {
+    if (window.innerWidth > 1150 && this.isMenuOpen) {
       this.closeMenu();
     }
   }

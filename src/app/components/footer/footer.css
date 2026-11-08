@@ -2,3 +2,6 @@
 .footer span { color:#fff; font-weight:900; }
 .footer p { margin:8px 0; color:#7f8796; font-size:13px; }
 .footer small { color:#4f5664; font-size:11px; }
+
+.license-entry { padding: 0 24px 24px; text-align: center; }
+.license-entry a { color: #aab7ce; font-size: 13px; }
