@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /.server-tests
+/runtime
 /bazel-out
 
 # Node

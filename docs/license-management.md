@@ -1,5 +1,32 @@
 # Portfolio license management
 
+## Runflare deployment on the existing domain
+
+The current Runflare project has a one-service limit. `scripts/start.mjs` can run the compiled .NET license service on loopback alongside the existing Node portfolio, with no additional public service. Public management stays at `https://amirhosseinmakineh.me/admin/licenses`; clinic validation uses `https://amirhosseinmakineh.me/api/licenses/check`.
+
+Attach a persistent 512 MB disk at `/data/licensing` and set:
+
+```text
+HOST=0.0.0.0
+PORT=3000
+LICENSE_EMBEDDED=true
+LICENSE_DATA_PATH=/data/licensing
+LICENSE_MANAGER_ORIGIN=https://amirhosseinmakineh.me
+NG_ALLOWED_HOSTS=amirhosseinmakineh.me,www.amirhosseinmakineh.me
+```
+
+The launcher sets production mode for runtime processes; do not omit build-time devDependencies by setting a production-only npm installation. Keep one replica. The .NET process binds only `127.0.0.1:5105` and trusts only loopback forwarding for HTTPS. HTTP is not allowed to any other upstream in production.
+
+On its first run the launcher creates the signing key and an administrator key on the mounted disk with owner-only permissions. Read `/data/licensing/admin-key` from the authenticated Runflare terminal to obtain your login key; it is never printed in app logs or returned by a web endpoint. Back up the entire mounted directory, including `records`, the keys, and `initialized`. Once initialized, a missing key prevents the license process from starting rather than silently rotating credentials. A missing runtime/disk leaves the public portfolio running and management unavailable.
+
+Publish `DentalDashboard-Framework/LicenseServer/Api` as a self-contained `linux-x64` .NET 10 application with invariant globalization. Then assemble a private upload bundle:
+
+```sh
+node scripts/package-runflare.mjs /absolute/published-license-runtime /absolute/portfolio-runflare.zip
+```
+
+The archive contains the committed public portfolio and the compiled private license runtime. It must not contain source from the private Framework repository, database files, or keys. Upload it to the existing Node service. Do not use a plain Git deployment for embedded mode: it lacks the private runtime. Keep automatic Git deployment disabled and rebuild this bundle for updates. The separate-service deployment below remains supported if the plan is expanded later.
+
 The portfolio exposes `/admin/licenses` and links to it from the desktop/mobile navigation and footer. This page manages the **same records** used by the clinic's signed Framework package. It does not maintain a second license database.
 
 The portfolio's existing Express server provides a same-origin gateway at `/api/license-management`. It uses the central server's existing authenticated `/admin` endpoints and CSRF protection. No change to the clinic's check endpoint or signing protocol is required.

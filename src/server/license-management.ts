@@ -2,7 +2,7 @@ import { randomBytes } from 'node:crypto';
 import express, { Request, Response } from 'express';
 
 type Session = { cookies: Map<string, string>; csrf: string; expires: number };
-type Options = { serverUrl?: string; origin?: string; production?: boolean };
+type Options = { serverUrl?: string; origin?: string; production?: boolean; embedded?: boolean };
 const cookieName = 'portfolio_license_admin';
 const lifetime = 60 * 60 * 1000;
 
@@ -14,12 +14,13 @@ class ApiError extends Error {
 export function licenseManagementRouter(options: Options = {}) {
   const router = express.Router();
   const production = options.production ?? !['development', 'test'].includes(process.env['NODE_ENV'] ?? '');
+  const embedded = options.embedded ?? process.env['LICENSE_EMBEDDED_ACTIVE'] === 'true';
   let serverUrl: string | undefined;
   let allowedOrigin: string | undefined;
   try {
     const url = new URL(options.serverUrl ?? process.env['LICENSE_SERVER_URL'] ?? '');
     const loopback = ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname);
-    if ((url.protocol !== 'https:' && !(url.protocol === 'http:' && loopback && !production)) ||
+    if ((url.protocol !== 'https:' && !(url.protocol === 'http:' && loopback && (!production || embedded))) ||
         url.username || url.password || url.search || url.hash || url.pathname !== '/') throw new Error();
     serverUrl = url.origin;
     const origin = options.origin ?? process.env['LICENSE_MANAGER_ORIGIN'];
@@ -57,6 +58,7 @@ export function licenseManagementRouter(options: Options = {}) {
   }
   async function upstream(session: Session, path: string, method = 'GET', body?: unknown): Promise<any> {
     const headers: Record<string, string> = { Accept: 'application/json' };
+    if (embedded) headers['X-Forwarded-Proto'] = 'https';
     if (session.cookies.size) headers['Cookie'] = [...session.cookies].map(([k, v]) => `${k}=${v}`).join('; ');
     if (method !== 'GET') {
       headers['Content-Type'] = 'application/json';
@@ -108,7 +110,7 @@ export function licenseManagementRouter(options: Options = {}) {
   router.use(express.json({ limit: '16kb', type: 'application/json' }));
   router.get('/session', (req, res) => {
     const active = sessions.has(sessionId(req));
-    res.json({ configured: Boolean(serverUrl), authenticated: active, ...(active ? { serverUrl } : {}) });
+    res.json({ configured: Boolean(serverUrl), authenticated: active, ...(active ? { serverUrl: embedded ? allowedOrigin : serverUrl } : {}) });
   });
   router.use((_req, _res, next) => {
     if (!serverUrl) throw new ApiError(503, 'اتصال به سرویس لایسنس هنوز تنظیم نشده است.');
@@ -134,7 +136,7 @@ export function licenseManagementRouter(options: Options = {}) {
     const id = randomBytes(32).toString('hex');
     sessions.set(id, session); attempts.delete(ip);
     res.cookie(cookieName, id, { httpOnly: true, secure: production, sameSite: 'strict', path: '/api/license-management', maxAge: lifetime });
-    res.json({ authenticated: true, serverUrl });
+    res.json({ authenticated: true, serverUrl: embedded ? allowedOrigin : serverUrl });
   });
   router.post('/logout', async (req, res) => {
     const session = sessions.get(sessionId(req));
@@ -162,5 +164,29 @@ export function licenseManagementRouter(options: Options = {}) {
       res.status(502).json({ error: 'ارتباط با سرویس لایسنس برقرار نشد؛ دوباره تلاش کنید.' });
     }
   });
+  return router;
+}
+
+/** Public clinic protocol on the portfolio origin; no administrator cookies are forwarded. */
+export function clinicLicenseCheckRouter() {
+  const router = express.Router();
+  router.use(express.json({ limit: '16kb' }));
+  router.post('/', async (req, res) => {
+    res.set({ 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
+    if (process.env['LICENSE_EMBEDDED_ACTIVE'] !== 'true') return res.sendStatus(503);
+    const secret = req.get('X-Installation-Secret') ?? '';
+    if (secret.length < 32 || secret.length > 4096) return res.sendStatus(401);
+    try {
+      const result = await fetch('http://127.0.0.1:5105/api/licenses/check', {
+        method: 'POST', redirect: 'error', signal: AbortSignal.timeout(10000),
+        headers: { 'Content-Type': 'application/json', 'X-Installation-Secret': secret, 'X-Forwarded-Proto': 'https' },
+        body: JSON.stringify(req.body),
+      });
+      if (!result.ok) return res.sendStatus([400, 401, 429].includes(result.status) ? result.status : 503);
+      return res.json(await result.json());
+    } catch { return res.sendStatus(503); }
+  });
+  router.use((_req, res) => res.sendStatus(405));
+  router.use((_error: unknown, _req: Request, res: Response, _next: express.NextFunction) => res.sendStatus(400));
   return router;
 }

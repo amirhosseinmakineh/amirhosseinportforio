@@ -10,7 +10,7 @@ async function listen(app) {
   await new Promise(resolve => server.once('listening', resolve));
   return { url: `http://127.0.0.1:${server.address().port}`, close: () => new Promise(resolve => server.close(resolve)) };
 }
-async function fixture(t) {
+async function fixture(t, options = {}) {
   const upstream = express(); upstream.use(express.json());
   let license = { id: 'license-1', clinicName: 'کلینیک آزمون', installationId: 'install-1', productId: 'dental-clinic', environment: 'Production', isActive: true, expiresAt: '2027-01-01T00:00:00Z', lastSeenAt: null, revision: 1 };
   const credentials = () => ({ license, installationSecret: 'new-installation-secret-shown-once-only' });
@@ -38,12 +38,13 @@ async function fixture(t) {
   upstream.post('/admin/licenses/:id/rotate-secret', (_req, res) => res.json(credentials()));
   upstream.get('/admin/signing-key', (_req, res) => res.json({ keyId: 'test-key', publicKey: 'public-key-only' }));
   const central = await listen(upstream); t.after(central.close);
-  const app = express(); app.use('/api/license-management', licenseManagementRouter({ serverUrl: central.url, origin, production: false }));
+  const requestOrigin = options.origin ?? origin;
+  const app = express(); app.use('/api/license-management', licenseManagementRouter({ serverUrl: central.url, origin, production: false, ...options }));
   const gateway = await listen(app); t.after(gateway.close);
   let cookie = '';
   async function request(path, method = 'GET', body, headers = {}) {
     const result = await fetch(`${gateway.url}/api/license-management${path}`, {
-      method, headers: { ...(cookie ? { Cookie: cookie } : {}), ...(method === 'GET' ? {} : { Origin: origin, 'X-License-Management': '1', 'Content-Type': 'application/json' }), ...headers },
+      method, headers: { ...(cookie ? { Cookie: cookie } : {}), ...(method === 'GET' ? {} : { Origin: requestOrigin, 'X-License-Management': '1', 'Content-Type': 'application/json' }), ...headers },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
     return result;
@@ -52,6 +53,7 @@ async function fixture(t) {
     const result = await request('/login', 'POST', { key }); assert.equal(result.status, 200);
     const value = result.headers.get('set-cookie');
     assert.match(value, /HttpOnly/i); assert.match(value, /SameSite=Strict/i);
+    if (options.production) assert.match(value, /Secure/);
     assert.doesNotMatch(value, /central-auth|central-csrf|upstream-cookie|antiforgery/);
     cookie = result.headers.getSetCookie().find(x => x.startsWith('portfolio_license_admin=')).split(';')[0];
     assert.equal(csrfRequests, 2);
@@ -113,4 +115,12 @@ test('missing configuration and insecure production URLs fail closed without bre
     assert.equal((await result.json()).configured, false);
     assert.equal((await fetch(server.url + '/api/license-management/licenses')).status, 503);
   }
+});
+
+test('explicit embedded production mode exposes the public origin rather than loopback credentials', async t => {
+  const { request, login } = await fixture(t, { production: true, embedded: true, origin: 'https://portfolio.test' });
+  await login();
+  const session = await (await request('/session')).json();
+  assert.equal(session.serverUrl, 'https://portfolio.test');
+  assert.equal((await request('/licenses')).status, 200);
 });
